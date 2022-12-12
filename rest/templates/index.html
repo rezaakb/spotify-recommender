@@ -1,0 +1,260 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.6/dist/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/stylesheets/style.css">
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.6/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.6/dist/js/i18n/defaults-*.min.js"></script>
+<script type="text/javascript" src="https://github.com/truckingsim/Ajax-Bootstrap-Select/blob/master/dist/js/ajax-bootstrap-select.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/11.1.2/sinon.min.js"></script>
+
+
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Background image -->
+  <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('https://developer.spotify.com/images/features/feature-hero-banner-2.svg');
+      height: 400px;
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">Music Recommender!</h1>
+          <h4 class="mb-3">Enjoy exploring among about 2 million songs...</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+</header>
+
+
+<div style="padding:40px;">
+<div class="row mb-3">
+  <div class="col-md-12">
+  <div class="card">
+ <div class="card-header">
+   Search for songs
+  </div>
+
+  <div class="card-body">
+    <div class="form-outline mb-3">
+  <input type="search" name="search-bar" id="search-bar" class="form-control" placeholder="Type song or artist name..." aria-label="Search" />
+</div>
+<img id ="loading-bar2" src="/static/imgs/loading.gif" alt="this slowpoke moves" width="30" style="place-self: center;">
+<div id="top20" class="text-muted mb-1">
+  Top 20 results:
+</div>
+<ul class="list-group scroll-s border" id="searched-songs">
+</ul>
+
+
+  </div>
+
+  </div>
+  </div>
+</div>
+<div class="row">
+   <div class="col-md-6">
+     <div class="card">
+   <div class="card-header">
+     Select Songs
+   </div>
+       <div class="card-body">
+         <div id ="info-songs"><div class="text-muted">Please select songs...</div></div>
+        <!--<form>
+         <select id="select-1" class="selectpicker mb-1" data-live-search="true" data-show-subtext="true" data-width="100%">
+           <option selected data-subtext="Not selected" id="-1"></option>
+          </select>
+
+          <select id="select-2" class="selectpicker mb-1" data-live-search="true" data-show-subtext="true" data-width="100%">
+            <option selected data-subtext="Not selected" id="-1"></option>
+          </select>
+
+          <select id="select-3" class="selectpicker mb-1" data-live-search="true" data-show-subtext="true" data-width="100%">
+            <option selected data-subtext="Not selected" id="-1"></option>
+          </select>
+
+          <select id="select-4" class="selectpicker mb-1" data-live-search="true" data-show-subtext="true" data-width="100%">
+            <option selected data-subtext="Not selected" id="-1"></option>
+          </select>
+
+         <select id="select-5" class="selectpicker mb-3" data-live-search="true" data-show-subtext="true" data-width="100%">
+           <option selected data-subtext="Not selected" id="-1"></option>
+         </select>
+
+        </form>-->
+          <ul class="list-group" id="selected-songs"></ul>
+          <hr id="linesubmit">
+          <a href="#" id="send_data" class="btn btn-primary w-100 mt-2" >Submit</a>
+
+   </div>
+   </div>
+   </div>
+   <div class="col-md-6">
+ <div class="card">
+ <div class="card-header">
+   Recommended Songs
+ </div>
+ <div class="card-body" style="display: inline-grid;">
+   <div id ="info-playlist"><div class="text-muted">Please select songs...</div></div>
+   <img id ="loading-bar" src="/static/imgs/loading.gif" alt="this slowpoke moves" width="30" style="place-self: center;">
+
+        <ul class="list-group scroll" id="recommended-songs"></ul>
+
+        </div>
+       </div>
+</div>
+
+
+   </div>
+ </div>
+</div>
+
+<!--<script type="text/javascript">
+  $(document).ready(function(){
+    $('#test').selectpicker({
+         source: {
+          search: function (callback, page, searchTerm) {
+                let data = { page, search: searchTerm };
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/search_songs',
+                    data: data,
+                    dataType: 'json',
+                    crossDomain: true
+                }).then(function (search_list) {
+                var x = document.getElementById('test');
+                $('#test').empty();
+                for (let k in search_list.list) {
+                  var option = document.createElement('option');
+                  option.text = search_list.list[k]["track_name"];
+                  $(option).attr('data-subtext',search_list.list[k]["artist_name"]);
+                  $(option).attr('id',search_list.list[k]["id"]);
+                  x.add(option)
+                }
+                $('#test').selectpicker('refresh');
+              })
+            }
+        }
+    });
+});
+</script>-->
+
+<script>
+function addItem(id,track_name,artist_name){
+    $("#info-songs").hide();
+    $("#selected-songs").show();
+    $("#linesubmit").show();
+    var entity = document.getElementById("selected-songs");
+    entity.innerHTML +=   '<div class="card border-0 mb-1" id="'+id+'"><div class="card-body"><div class="media align-items-center"><div class="media-body"><div style="display:flex;"><div class="text">'+track_name+'</div><div class="text-muted ml-1">'+artist_name+'</div></div></div><a href="#" onclick="removeItem(\''+id+'\')"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-dash-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg></a></div></div></div>';
+    document.getElementById("send_data").style.display = "block";
+}
+function removeItem(id){
+   $( "#"+id ).remove()
+}
+</script>
+
+
+<script type="text/javascript">
+// Get the input field
+var input = document.getElementById("search-bar");
+var searchstring = $('#search-bar');
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    var searchstring = $('#search-bar');
+    searchstring.focus();
+    query = searchstring.val();
+    $("#loading-bar2").show();
+    fetch("/api/search_songs",
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+          },
+         body:JSON.stringify({'query':query})}).then(
+          function (response) {
+            return response.json();
+          }).then(function (searched) {
+          $("#loading-bar2").hide();
+          $("#top20").show();
+          $("#searched-songs").show();
+          var x = document.getElementById("searched-songs");
+
+          for (let k in searched.list) {
+            x.innerHTML +=   '<div class="card border-0 mb-1"><div class="card-body"><div class="media align-items-center"><div class="media-body"><div style="display:flex;"><div class="text">'+searched.list[k]["track_name"]+'</div><div class="text-muted ml-1">'+searched.list[k]["artist_name"]+'</div></div></div><a href="#" onclick="addItem(\''+searched.list[k]["id"]+'\',\''+searched.list[k]["track_name"]+'\',\''+searched.list[k]["artist_name"]+'\')"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></a></div></div></div>';
+
+          }
+
+
+
+        })
+
+
+  }
+});
+</script>
+
+
+<script type="text/javascript">
+
+  const button = document.getElementById("send_data");
+
+  button.onclick= function(){
+
+    var data = [];
+    var list_child =$('#selected-songs').children();
+
+    $("#loading-bar").show();
+    $("#info-playlist").hide();
+
+    for(var i = 0; i < list_child.length; i++) {
+      data.push(list_child[i].id);
+    }
+    console.log(data)
+    var playlist = {'data':data}
+
+    fetch("/api/send_playlist",
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json'
+        },
+       body:JSON.stringify(playlist)}).then(function (response) {
+          return response.json();
+        }).then(function (recommended) {
+        $("#loading-bar").hide();
+        var x = document.getElementById("recommended-songs");
+
+        for (let k in recommended.final) {
+          x.innerHTML += '<div class="card border-0 mb-1"><div class="card-body"><div class="media align-items-center"><img class="card-avatar mr-4" width="50" height="50" src="'+recommended.final[k]["img_url"]+'"><rect width="100%" height="100%" fill="#495057"></rect></img><div class="media-body"><h5 class="card-title mb-1">'+recommended.final[k]["track_name"]+'</h5><div class="text-muted">'+recommended.final[k]["artist_name"]+'</div></div><a href="'+recommended.final[k]["url"]+'" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-play-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg></a></div></div></div>';
+       }
+
+  }); }
+
+</script>

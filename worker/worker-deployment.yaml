@@ -1,0 +1,32 @@
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: worker-server
+spec:
+  selector:
+    matchLabels:
+      app: worker-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: worker-server
+    spec:
+      containers:
+      - name: worker-server
+        image: rezaakb/worker-server:v9
+        resources:
+          requests:
+            cpu: 400m
+            memory: 1Gi
+        env:
+        - name: REDIS_HOST
+          value: "redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: MINIO_HOST
+          value: minio:9000
+        - name: MINIO_USER
+          value: rootuser
+        - name: MINIO_PASSWD
+          value: rootpass123

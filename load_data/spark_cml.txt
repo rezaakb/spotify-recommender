@@ -1,0 +1,4 @@
+gcloud dataproc clusters create cluster-0b83 --region us-central1 --zone us-central1-f --master-machine-type n1-highmem-16 --master-boot-disk-size 2000 --num-workers 3 --worker-machine-type n1-highmem-2 --worker-boot-disk-size 500 --image-version 2.0-debian10 --project grand-song-363108 --properties='^#^dataproc:pip.packages=spotipy==2.19.0,pandas==1.3.5,textblob==0.17.1,nltk==3.6.5,'
+
+
+gcloud dataproc jobs submit pyspark gs://spotify-million/spark-sentiment.py --cluster=cluster-0b83 --region=us-central1 --jars [gs://spotify-million/jar-files/mongo-spark-connector-10.0.5.jar,gs://spotify-million/jar-files/mongo-java-driver-3.12.11.jar]
