@@ -2,6 +2,8 @@
 
 [Slides](https://docs.google.com/presentation/d/1ecWfFkn9KhqBlpo_bE-1zvL_RSZFfAWjZK_HFz3N0BU/edit?usp=sharing), [Report](https://docs.google.com/document/d/1o7_80qezwflZwY2l8-gyAfHA2kHTRYfPu1GkQgcSPeo/edit?usp=sharing)
 
+Enjoy exploring among about 2 million songs...
+
 ## Overview
 
 ### The architecture diagram of our system
