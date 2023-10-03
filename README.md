@@ -1,4 +1,4 @@
-# Spotify Music Recommender
+# Music Recommendation Using Spotify Million Playlist Dataset
 
 [Slides](https://docs.google.com/presentation/d/1ecWfFkn9KhqBlpo_bE-1zvL_RSZFfAWjZK_HFz3N0BU/edit?usp=sharing), [Report](https://docs.google.com/document/d/1o7_80qezwflZwY2l8-gyAfHA2kHTRYfPu1GkQgcSPeo/edit?usp=sharing)
 
@@ -10,7 +10,24 @@ Enjoy exploring among about 2 million songs...
 <img width="836" alt="image" src="https://user-images.githubusercontent.com/23244168/232262185-f297f8d0-004b-44f3-b73d-440c95619634.png">
 
 
-The goal of a recommendation system is to recommend or predict items a user might like based on their data or based on the entire user database. A general recommendation system pipeline includes steps such as Data Extraction, Data Preprocessing, Recommendation algorithm, and Output Recommendations. In this project we developed a Music Recommendation System Using the famous Spotify Million Playlist Dataset. We pre-processed about two million unique songs and find a feature vector for each of them. The user searches for songs by track name and artist name. Then, the user selects their desired songs from the list based on which the system returns relevant recommendations. 
+Our project focuses on developing a Music Recommendation System using the Spotify Million Playlist Dataset. We processed approximately two million unique songs to create feature vectors for each of them. Users can search for songs by track name and artist name, select their preferred songs from the list, and receive relevant recommendations from the system.
 
 ### Preprocessing stages
 <img width="951" alt="image" src="https://user-images.githubusercontent.com/23244168/232262227-11a4b50b-039d-48f7-a3e8-5e3deea7c710.png">
+
+Data preprocessing included cleaning 32GB of raw data and performing sentiment analysis on Dataproc. Feature vectors were obtained from the Spotify API for 1,998,516 unique songs. Features were joined and saved in MongoDB for further processing.
+
+### Recommendation Method
+
+To find similar songs, we calculated the cosine similarity between the mean feature vector of selected songs by the user and all feature vectors in our database. Each feature vector comprises 27 features, including danceability, energy, loudness, speechiness, and more. 
+
+### Components Used
+
+- Flask: Framework for developing the REST-Server.
+- HTML, CSS, and JS: Used for the frontend UI.
+- Pyspark: Utilized for preprocessing the Spotify Million Playlist Dataset.
+- APIs: Spotify API for extracting features and cover art images.
+- Redis: for message queuing.
+- MongoDB: Storage for extracted features.
+- Google Storage Bucket: Used to store raw data.
+- Docker and Kubernetes: Deployment of the application.
