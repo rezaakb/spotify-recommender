@@ -15,8 +15,8 @@ This section provides a step-by-step guide on setting up and running the project
 - **Kubernetes:** Ensure [Kubernetes](https://kubernetes.io/) is installed and configured.
 - **Clone the Repository:** 
   ```sh
-  git clone https://github.com/rezaakb/CSCI-5253-Final-Project.git
-  cd CSCI-5253-Final-Project
+  git clone https://github.com/rezaakb/spotify-recommender.git
+  cd spotify-recommender
   ```
 - **Run the Deployment Script:** This script sets up Redis, REST, logs, and worker services and forwards the Redis service connection to your local machine.
   ```sh
